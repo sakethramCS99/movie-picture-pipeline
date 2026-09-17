@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Movie Picture Pipeline
 
 You've been brought on as the DevOps resource for a development team that manages a web application that is a catalog of Movie Picture movies. They're in dire need of automating their development workflows in hopes of accelerating their release cycle. They'd like to use Github Actions to automate testing, building and deploying their applications to an existing Kubernetes cluster.
@@ -51,7 +50,7 @@ In the `starter` folder, you'll find 2 folders, one named `frontend` and one nam
       2. The tag applied to the image should be the git SHA of the commit that triggered the build
 
 **⚠️ NOTE**
-Once you begin work on Continuous Deployment, you'll need to first setup the AWS and Kubernetes environment. Follow the [instructions below](#setting-up-continuous-deployment-environment)  instructions only when you're ready to start testing your deployments.
+Once you begin work on Continuous Deployment, you'll need to first setup the AWS and Kubernetes environment. Follow the [instructions below](#setting-up-continuous-deployment-environment) instructions only when you're ready to start testing your deployments.
 
 ## Setting up Continuous Deployment environment
 
@@ -82,7 +81,7 @@ terraform output
 2. Launch the Cloud Gateway and go to the IAM service.
 3. Under users, you should only see the `github-action-user` user account
 4. Click the account and go to `Security Credentials`
-5. Under `Access keys`  select `Create access key`
+5. Under `Access keys` select `Create access key`
 6. Select `Application running outside AWS` and click `Next`, then `Create access key` to finish creating the keys
 7. On the last page, make sure to copy/paste these keys for storing in Github Secrets
 ![image](https://user-images.githubusercontent.com/57732284/221991526-ec4af661-b200-48cd-9087-6f1b3b9820b3.png)
@@ -408,9 +407,48 @@ kustomize edit set image backend=<ECR_REPO_URL>:<NEW_TAG_HERE>
 kustomize build | kubectl apply -f -
 ```
 
+## CI/CD Pipeline Evidence
+
+All four required workflows have been implemented and verified with successful runs. Screenshots below show each pipeline's full job history, and live verification of both the frontend and backend applications running on the deployed EKS cluster.
+
+### Frontend Continuous Integration (`frontend-ci.yaml`)
+
+Lint and Test run in parallel, Build runs only after both succeed.
+
+![Frontend CI](docs/screenshots/frontend-ci.png)
+
+### Backend Continuous Integration (`backend-ci.yaml`)
+
+Lint and Test run in parallel, Build runs only after both succeed.
+
+![Backend CI](docs/screenshots/backend-ci.png)
+
+### Frontend Continuous Deployment (`frontend-cd.yaml`)
+
+Lint and Test run in parallel; Build and Push to ECR runs after both succeed; Deploy to EKS runs after the image is pushed.
+
+![Frontend CD](docs/screenshots/frontend-cd.png)
+
+### Backend Continuous Deployment (`backend-cd.yaml`)
+
+Lint and Test run in parallel; Build and Push to ECR runs after both succeed; Deploy to EKS runs after the image is pushed.
+
+![Backend CD](docs/screenshots/backend-cd.png)
+
+### Live Verification
+
+**Frontend** — the deployed application correctly fetches and displays the movie list from the backend API, confirming the `REACT_APP_MOVIE_API_URL` build argument was passed and wired correctly:
+
+![Frontend Live](docs/screenshots/frontend-live.png)
+
+**Backend** — the deployed `/movies` endpoint returns the expected JSON payload:
+
+![Backend Live](docs/screenshots/backend-live.png)
+
+```json
+{"movies":[{"id":"123","title":"Top Gun: Maverick"},{"id":"456","title":"Sonic the Hedgehog"},{"id":"789","title":"A Quiet Place"}]}
+```
+
 ## License
 
 [License](LICENSE.md)
-=======
-# movie-picture-pipeline
->>>>>>> 0903999ee5bf1feef98d702b28c08791a30078c6
