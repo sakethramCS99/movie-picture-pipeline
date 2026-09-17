@@ -15,7 +15,7 @@ defaults:
 env:
   PYTHON_VERSION: "3.10"
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: mp-backend        # must match the ECR repo name you created
+  ECR_REPOSITORY: backend        # must match the ECR repo name you created
   EKS_CLUSTER_NAME: cluster         # must match your EKS cluster name
 
 jobs:

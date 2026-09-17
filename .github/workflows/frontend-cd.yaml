@@ -15,7 +15,7 @@ defaults:
 env:
   NODE_VERSION: 18
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: mp-frontend       # must match the ECR repo name you created
+  ECR_REPOSITORY: frontend       # must match the ECR repo name you created
   EKS_CLUSTER_NAME: cluster         # must match your EKS cluster name
 
 jobs:
