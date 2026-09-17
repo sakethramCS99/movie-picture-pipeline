@@ -415,35 +415,35 @@ All four required workflows have been implemented and verified with successful r
 
 Lint and Test run in parallel, Build runs only after both succeed.
 
-![Frontend CI](docs/screenshots/frontend-ci.png)
+![Frontend CI](Docs/Screenshots/frontend-ci.png)
 
 ### Backend Continuous Integration (`backend-ci.yaml`)
 
 Lint and Test run in parallel, Build runs only after both succeed.
 
-![Backend CI](docs/screenshots/backend-ci.png)
+![Backend CI](Docs/Screenshots/backend-ci.png)
 
 ### Frontend Continuous Deployment (`frontend-cd.yaml`)
 
 Lint and Test run in parallel; Build and Push to ECR runs after both succeed; Deploy to EKS runs after the image is pushed.
 
-![Frontend CD](docs/screenshots/frontend-cd.png)
+![Frontend CD](Docs/Screenshots/frontend-cd.png)
 
 ### Backend Continuous Deployment (`backend-cd.yaml`)
 
 Lint and Test run in parallel; Build and Push to ECR runs after both succeed; Deploy to EKS runs after the image is pushed.
 
-![Backend CD](docs/screenshots/backend-cd.png)
+![Backend CD](Docs/Screenshots/backend-cd.png)
 
 ### Live Verification
 
 **Frontend** — the deployed application correctly fetches and displays the movie list from the backend API, confirming the `REACT_APP_MOVIE_API_URL` build argument was passed and wired correctly:
 
-![Frontend Live](docs/screenshots/frontend-live.png)
+![Frontend Live](Docs/Screenshots/frontend-live.png)
 
 **Backend** — the deployed `/movies` endpoint returns the expected JSON payload:
 
-![Backend Live](docs/screenshots/backend-live.png)
+![Backend Live](Docs/Screenshots/backend-live.png)
 
 ```json
 {"movies":[{"id":"123","title":"Top Gun: Maverick"},{"id":"456","title":"Sonic the Hedgehog"},{"id":"789","title":"A Quiet Place"}]}
